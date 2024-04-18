@@ -44,5 +44,4 @@ cd ${SRC}/libs-back && ./configure && gmake -j"${CPUS}" || exit 1 && gmake insta
 cd ${SRC}/apps-gworkspace && ./configure && gmake && gmake install
 cd ${SRC}/apps-systempreferences && gmake -j"${CPUS}" && gmake install
 cd ${SRC}/dubstep-dark-theme && gmake -j"${CPUS}" && gmake install
-cd ${SRC}/dubstep-dark-theme && gmake -j"${CPUS}" && gmake install
 cd ${SRC}/gs-terminal && gmake -j"${CPUS}" && gmake install
