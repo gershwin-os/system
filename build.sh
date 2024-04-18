@@ -29,7 +29,7 @@ gmake -j"${CPUS}" || exit 1
 gmake install
 rm /System/include/Block_private.h
 
-mkdir ${SRC}/ libobjc2/Build
+mkdir ${SRC}/libobjc2/Build
 cd ${SRC}/libobjc2/Build && pwd && ls && cmake .. \
   -DGNUSTEP_INSTALL_TYPE=SYSTEM \
   -DCMAKE_BUILD_TYPE=Release \
