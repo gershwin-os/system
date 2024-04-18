@@ -9,7 +9,8 @@ export GNUSTEP_INSTALLATION_DOMAIN=SYSTEM
 . /Developer/Makefiles/GNUstep.sh
 
 mkdir libobjc2/Build
-cd libobjc2/Build && cmake .. \
+pwd
+cd libobjc2/Build && pwd && cmake .. \
   -DGNUSTEP_INSTALL_TYPE=SYSTEM \
   -DCMAKE_BUILD_TYPE=Release \
   -DCMAKE_C_COMPILER=clang \
