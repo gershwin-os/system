@@ -8,6 +8,7 @@ CPUS=$(nproc)
 export GNUSTEP_INSTALLATION_DOMAIN=SYSTEM
 . /Developer/Makefiles/GNUstep.sh
 
+ls libobjc2
 mkdir libobjc2/Build
 pwd
 ls
