@@ -1,0 +1,27 @@
+[submodule "swift-corelibs-libdispatch"]
+	path = swift-corelibs-libdispatch
+	url = https://github.com/apple/swift-corelibs-libdispatch
+[submodule "libobjc2"]
+	path = libobjc2
+	url = https://github.com/gnustep/libobjc2
+[submodule "libs-base"]
+	path = libs-base
+	url = https://github.com/gnustep/libs-base
+[submodule "libs-gui"]
+	path = libs-gui
+	url = https://github.com/gnustep/libs-gui
+[submodule "libs-back"]
+	path = libs-back
+	url = https://github.com/gnustep/libs-back
+[submodule "apps-gworkspace"]
+	path = apps-gworkspace
+	url = https://github.com/gnustep/apps-gworkspace.git
+[submodule "apps-systempreferences"]
+	path = apps-systempreferences
+	url = https://github.com/gnustep/apps-systempreferences.git
+[submodule "dubstep-dark-theme"]
+	path = dubstep-dark-theme
+	url = https://github.com/ds-repos/dubstep-dark-theme
+[submodule "gs-terminal"]
+	path = gs-terminal
+	url = https://github.com/onflapp/gs-terminal
