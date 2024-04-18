@@ -21,6 +21,8 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+        with:
+          submodules: true
       - name: Get latest AMD64 workflow run ID
         id: get_latest_amd64_run
         run: |
