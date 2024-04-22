@@ -22,6 +22,3 @@
 [submodule "dubstep-dark-theme"]
 	path = dubstep-dark-theme
 	url = https://github.com/ds-repos/dubstep-dark-theme
-[submodule "gs-terminal"]
-	path = gs-terminal
-	url = https://github.com/onflapp/gs-terminal
