@@ -56,7 +56,7 @@ jobs:
           unzip root_arm64.zip
           tar -xf /home/runner/work/system/system/root-arm64.tar.gz -C /
           ./build.sh
-          cd /home/runner/work/system/system/ && && tar -zcvf system-amd64.tar.gz /Developer /Library /System
+          cd /home/runner/work/system/system/ && tar -zcvf system-amd64.tar.gz /Developer /Library /System
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
