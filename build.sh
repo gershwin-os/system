@@ -3,6 +3,27 @@
 # Exit immediately if any command exits with a non-zero status
 set -e
 
+# Initialize WORKDIR to empty (if not already set)
+export WORKDIR=""
+
+# Detect whether or not GitHub actions is being used
+if [ -d "/__w/system/system/" ]; then
+  echo "GH actions AMD64 runner detected"
+  export WORKDIR="/__w/system/system/"
+fi
+
+if [ -d "/home/runner/work/system/system/" ]; then
+  echo "GH actions ARM64 runner detected"
+  export WORKDIR="/home/runner/work/system/system/"
+fi
+
+if [ -z "$WORKDIR" ]; then
+  echo "WORKDIR is empty, setting it to current working directory"
+  WORKDIR="$PWD"
+fi
+
+echo "WORKDIR is set to: $WORKDIR"
+
 # Determine number of CPUs when building
 CPUS=$(nproc)
 export GNUSTEP_INSTALLATION_DOMAIN=SYSTEM
