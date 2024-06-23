@@ -27,18 +27,17 @@ echo "WORKDIR is set to: $WORKDIR"
 # Determine number of CPUs when building
 CPUS=$(nproc)
 export GNUSTEP_INSTALLATION_DOMAIN=SYSTEM
+
+cp ${WORKDIR}/FilesystemLayouts/gershwin ${WORKDIR}/tools-make/FilesystemLayouts/gershwin
+cd ${WORKDIR}/tools-make && ./configure \
+  --with-layout=gershwin \
+  --with-config-file=/Library/Preferences/GNUstep.conf \
+  --with-library-combo=ng-gnu-gnu \
+&& gmake || exit 1 && gmake install
 . /Developer/Makefiles/GNUstep.sh
 
-if [ -f "/__w/system/system/root_amd64.zip" ]; then
-  export SRC="/__w/system/system/"
-fi
-
-if [ -f "/home/runner/work/system/system/root_arm64.zip" ]; then
-  export SRC="/home/runner/work/system/system/"  
-fi
-
-mkdir ${SRC}/swift-corelibs-libdispatch/Build
-cd ${SRC}/swift-corelibs-libdispatch/Build && cmake .. \
+mkdir ${WORKDIR}/swift-corelibs-libdispatch/Build
+cd ${WORKDIR}/swift-corelibs-libdispatch/Build && cmake .. \
   -DCMAKE_BUILD_TYPE=Release \
   -DCMAKE_C_COMPILER=clang \
   -DCMAKE_CXX_COMPILER=clang++ \
@@ -50,8 +49,8 @@ gmake -j"${CPUS}" || exit 1
 gmake install
 rm /System/include/Block_private.h
 
-mkdir ${SRC}/libobjc2/Build
-cd ${SRC}/libobjc2/Build && pwd && ls && cmake .. \
+mkdir ${WORKDIR}/libobjc2/Build
+cd ${WORKDIR}/libobjc2/Build && pwd && ls && cmake .. \
   -DGNUSTEP_INSTALL_TYPE=SYSTEM \
   -DCMAKE_BUILD_TYPE=Release \
   -DCMAKE_C_COMPILER=clang \
@@ -59,9 +58,9 @@ cd ${SRC}/libobjc2/Build && pwd && ls && cmake .. \
 gmake -j"${CPUS}" || exit 1
 gmake install
 
-cd ${SRC}/libs-base && ./configure --with-installation-domain=SYSTEM && gmake -j"${CPUS}" || exit 1 && gmake install
-cd ${SRC}/libs-gui && ./configure && gmake -j"${CPUS}" || exit 1 || exit 1 && gmake install
-cd ${SRC}/libs-back && ./configure && gmake -j"${CPUS}" || exit 1 && gmake install
-cd ${SRC}/apps-gworkspace && ./configure && gmake && gmake install
-cd ${SRC}/apps-systempreferences && gmake -j"${CPUS}" && gmake install
-cd ${SRC}/dubstep-dark-theme && gmake -j"${CPUS}" && gmake install
+cd ${WORKDIR}/libs-base && ./configure --with-installation-domain=SYSTEM && gmake -j"${CPUS}" || exit 1 && gmake install
+cd ${WORKDIR}/libs-gui && ./configure && gmake -j"${CPUS}" || exit 1 || exit 1 && gmake install
+cd ${WORKDIR}/libs-back && ./configure && gmake -j"${CPUS}" || exit 1 && gmake install
+cd ${WORKDIR}/apps-gworkspace && ./configure && gmake && gmake install
+cd ${WORKDIR}/apps-systempreferences && gmake -j"${CPUS}" && gmake install
+cd ${WORKDIR}/dubstep-dark-theme && gmake -j"${CPUS}" && gmake install
