@@ -25,8 +25,6 @@ jobs:
           submodules: true
       - name: Build system on Debian 12 AMD64
         run: |
-          unzip root_amd64.zip
-          tar -xf /__w/system/system/root-amd64.tar.gz -C /
           ./build.sh
           cd /__w/system/system/ && tar -zcvf system-amd64.tar.gz /Developer /Library /System 
         continue-on-error: false
