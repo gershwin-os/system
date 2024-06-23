@@ -3,6 +3,9 @@
 # Exit immediately if any command exits with a non-zero status
 set -e
 
+# Ensure that submodules have been checked out
+git submodule update --init --recursive
+
 # Initialize WORKDIR to empty (if not already set)
 export WORKDIR=""
 
