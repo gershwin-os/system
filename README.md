@@ -50,3 +50,13 @@ sudo ./system/tools-scripts/install-dependencies-linux
 ```
 cd system && sudo ./build.sh
 ```
+
+4. Source GNUstep.sh:
+```
+. /Developer/Makefiles/GNUstep.sh 
+```
+
+5. Launch GWorkspace:
+```
+openapp GWorkspace
+```
