@@ -38,7 +38,7 @@ Follow these steps to set up Gershwin System on Debian:
 1. Clone the repository with submodules:
 
 ```
-git clone https://github.com/gershwin-os/system.git  --recurse-submodules
+git clone https://github.com/gershwin-os/system.git --recurse-submodules
 ```
 
 2. Install dependencies:
