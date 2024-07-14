@@ -1,6 +1,10 @@
-# Gershwin System
+# Gershwin System Pacakge
 
 This repository automates the installation of GNUstep components on Debian, utilizing submodules for a streamlined setup.
+
+### Requirements
+
+[Gershwin Library](https://github.com/gershwin-os/library.git)
 
 ## Components Included
 
