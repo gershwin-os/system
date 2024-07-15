@@ -33,7 +33,7 @@ install:
 	  --with-config-file=/Library/Preferences/GNUstep.conf \
 	  --with-library-combo=ng-gnu-gnu \
 	&& gmake || exit 1 && gmake install; \
-	. /Developer/Makefiles/GNUstep.sh; \
+	. /System/Makefiles/GNUstep.sh; \
 	mkdir -p $$WORKDIR/swift-corelibs-libdispatch/Build; \
 	cd $$WORKDIR/swift-corelibs-libdispatch/Build && cmake .. \
 	  -DCMAKE_BUILD_TYPE=Release \
