@@ -35,9 +35,9 @@ These components are installed to the following directories within the SYSTEM do
 - **Man Pages**: `/System/share/man`
 - **Info Pages**: `/System/share/info`
 
-## Usage (Debian)
+## Installation
 
-Follow these steps to set up Gershwin System on Debian:
+Follow these steps to set up Gershwin System on Linux:
 
 1. Clone the repository with submodules:
 
@@ -50,14 +50,30 @@ git clone https://github.com/gershwin-os/system.git --recurse-submodules
 sudo ./system/tools-scripts/install-dependencies-linux
 ```
 
-3. Build the components:
+3. Install using make:
 ```
-cd system && sudo ./build.sh
+sudo make install
 ```
+
+## Uninstallation
+
+```
+sudo make uninstall
+```
+
+## Cleanup
+
+This command will remove the gershwin-system-AMD64.tar.gz or gershwin-system-ARM64.tar.gz tar archive:
+
+```
+sudo make clean
+```
+
+## Usage
 
 4. Source GNUstep.sh:
 ```
-. /Developer/Makefiles/GNUstep.sh 
+. /System/Makefiles/GNUstep.sh 
 ```
 
 5. Launch GWorkspace:
