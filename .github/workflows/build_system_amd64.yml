@@ -23,8 +23,30 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: true
+      - name: Get latest AMD64 workflow run ID
+        id: get_latest_amd64_run
+        run: |
+          amd64_response=$(curl -s -X GET -u ${{ secrets.GH_TOKEN }} "https://api.github.com/repos/gershwin-os/library/actions/workflows/build_library_amd64.yml/runs?status=success&per_page=1")
+          echo "AMD64 API response: $amd64_response"
+          latest_run_amd64=$(echo $amd64_response | jq -r '.workflow_runs[0].id')
+          echo "Latest AMD64 run ID: $latest_run_amd64"
+          echo "AMD64_RUN_ID=$latest_run_amd64" >> $GITHUB_ENV
+        shell: bash
+      - name: Get AMD64 artifact URL
+        id: get_amd64_artifact_url
+        run: |
+          artifact_url_amd64=$(curl -s -X GET -u ${{ secrets.GH_TOKEN }} "https://api.github.com/repos/gershwin-os/library/actions/runs/${{ env.AMD64_RUN_ID }}/artifacts" | jq -r '.artifacts[0].archive_download_url')
+          echo "AMD64 Artifact URL: $artifact_url_amd64"
+          echo "AMD64_ARTIFACT_URL=$artifact_url_amd64" >> $GITHUB_ENV
+        shell: bash
+      - name: Download AMD64 artifact
+        run: |
+          curl -s -o gershwin-library-amd64.zip -L -u ${{ secrets.GH_TOKEN }} "${{ env.AMD64_ARTIFACT_URL }}"
+        shell: bash
       - name: Build system on Debian 12 AMD64
         run: |
+          gershwin-library-amd64.zip
+          tar -xf /__w/developer/developer/gershwin-library-amd64.tar.gz -C /
           ./build.sh
           cd /__w/system/system/ && tar -zcvf system-amd64.tar.gz /Developer /Library /System 
         continue-on-error: false
