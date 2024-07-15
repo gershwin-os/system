@@ -1,4 +1,4 @@
-# Gershwin System Pacakge
+# Gershwin System
 
 This repository automates the installation of GNUstep components on Debian, utilizing submodules for a streamlined setup.
 
@@ -71,12 +71,12 @@ sudo make clean
 
 ## Usage
 
-4. Source GNUstep.sh:
+1. Source GNUstep.sh:
 ```
 . /System/Makefiles/GNUstep.sh 
 ```
 
-5. Launch GWorkspace:
+2. Launch GWorkspace:
 ```
 openapp GWorkspace
 ```
