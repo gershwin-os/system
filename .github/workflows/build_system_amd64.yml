@@ -45,7 +45,7 @@ jobs:
         shell: bash
       - name: Build system on Debian 12 AMD64
         run: |
-          gershwin-library-amd64.zip
+          unzip gershwin-library-amd64.zip
           tar -xf /__w/developer/developer/gershwin-library-amd64.tar.gz -C /
           ./build.sh
           cd /__w/system/system/ && tar -zcvf system-amd64.tar.gz /Developer /Library /System 
