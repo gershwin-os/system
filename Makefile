@@ -28,9 +28,8 @@ install:
 	  WORKDIR="$(shell pwd)"; \
 	fi; \
 	echo "WORKDIR is set to: $$WORKDIR"; \
-	cp $$WORKDIR/FilesystemLayouts/gershwin $$WORKDIR/tools-make/FilesystemLayouts/gershwin; \
 	cd $$WORKDIR/tools-make && ./configure \
-	  --with-layout=gershwin \
+	  --enable-importing-config-file \
 	  --with-config-file=/Library/Preferences/GNUstep.conf \
 	  --with-library-combo=ng-gnu-gnu \
 	&& gmake || exit 1 && gmake install; \
@@ -61,6 +60,7 @@ install:
 	cd $$WORKDIR/apps-gworkspace && ./configure && gmake && gmake install; \
 	cd $$WORKDIR/apps-systempreferences && gmake -j"${CPUS}" && gmake install; \
 	cd $$WORKDIR/dubstep-dark-theme && gmake -j"${CPUS}" && gmake install; \
+	cd $$WORKDIR && ARCH=$$(dpkg --print-architecture) && tar -czvf gershwin-system-$$ARCH.tar.gz /System; \
 	fi;
 
 # Define the uninstall target
@@ -76,4 +76,14 @@ uninstall:
 	else \
 	  echo "System appears to be already uninstalled.  Nothing was removed"; \
 	fi
-.PHONY: install uninstall
+
+clean:
+	@ARCH=$(shell dpkg --print-architecture); \
+	FILE=gershwin-system-$$ARCH.tar.gz; \
+	if [ -f $$FILE ]; then \
+		echo "Removing $$FILE..."; \
+		rm -f $$FILE; \
+		echo "$$FILE removed successfully."; \
+	else \
+		echo "Nothing to clean."; \
+	fi
