@@ -46,11 +46,11 @@ jobs:
       - name: Build system on Debian 12 AMD64
         run: |
           unzip gershwin-library-amd64.zip
-          tar -xf /__w/system/system/gershwin-library-amd64.tar.gz -C /
+          tar -xf /__w/system/system/library.txz -C /
           make install
         continue-on-error: false
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: gershwin-system-amd64-main
-          path: /__w/system/system/gershwin-system-amd64.tar.gz
+          path: /tmp/system.txz
