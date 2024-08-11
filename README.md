@@ -16,11 +16,10 @@ Since Gershwin leverages GNUstep, it should, in theory, be compatible with any p
 - **tools-scripts**: Utility scripts for setup and configuration.
 - **tools-make**: Makefiles for building components.
 - **libobjc2**: Objective-C runtime library.
-- **swift-corelibs-libdispatch**: Swift's asynchronous task execution library.
 - **libs-base**: Fundamental libraries for GNUstep.
 - **libs-gui**: GUI libraries for graphical interface development.
 - **libs-back**: Backend libraries for GNUstep.
-- **apps-gworkspace**: GNUstep workspace application.
+- **gworkspace**: GNUstep GWorkspace fork with modifications for OS X style layout.
 - **apps-systempreferences**: System preferences application.
 - **dubstep-dark-theme**: Dark theme for the GNUstep environment.
 
