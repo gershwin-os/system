@@ -23,6 +23,9 @@ install: check_root
 	else \
 	  WORKDIR=`pwd`; \
 	fi; \
+	mkdir -p /System/Library; \
+	cp -R Library/* /System/Library; \
+	. /System/Library/Preferences/GNUstep.conf; \
 	CPUS=`nproc`; \
 	export GNUSTEP_INSTALLATION_DOMAIN="SYSTEM"; \
 	echo "CPUS is set to: $$CPUS"; \
@@ -30,7 +33,7 @@ install: check_root
 	echo "WORKDIR is set to: $$WORKDIR"; \
 	cd $$WORKDIR/tools-make && ./configure \
 	  --enable-importing-config-file \
-	  --with-config-file=/Library/Preferences/GNUstep.conf \
+	  --with-config-file=/System/Library/Preferences/GNUstep.conf \
 	  --with-library-combo=ng-gnu-gnu \
 	&& gmake || exit 1 && gmake install; \
 	. /System/Makefiles/GNUstep.sh; \
