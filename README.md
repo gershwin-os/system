@@ -1,6 +1,6 @@
 # Gershwin System
 
-This repository automates the installation of GNUstep components on Debian, utilizing submodules for a streamlined setup.
+Gershwin is an OS X-like environment created using GNUstep, an open-source framework that closely mirrors Apple's Cocoa framework. 
 
 # Requirements
 
