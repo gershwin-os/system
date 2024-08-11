@@ -2,10 +2,6 @@
 
 This repository automates the installation of GNUstep components on Debian, utilizing submodules for a streamlined setup.
 
-### Requirements
-
-[Gershwin Library](https://github.com/gershwin-os/library.git)
-
 ## Components Included
 
 - **tools-scripts**: Utility scripts for setup and configuration.
@@ -52,7 +48,7 @@ sudo ./system/tools-scripts/install-dependencies-linux
 
 3. Install using make:
 ```
-sudo make install
+cd system && sudo make install
 ```
 
 ## Uninstallation
