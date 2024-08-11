@@ -1,6 +1,3 @@
-[submodule "swift-corelibs-libdispatch"]
-	path = swift-corelibs-libdispatch
-	url = https://github.com/apple/swift-corelibs-libdispatch
 [submodule "libobjc2"]
 	path = libobjc2
 	url = https://github.com/gnustep/libobjc2
@@ -13,9 +10,6 @@
 [submodule "libs-back"]
 	path = libs-back
 	url = https://github.com/gnustep/libs-back
-[submodule "apps-gworkspace"]
-	path = apps-gworkspace
-	url = https://github.com/gnustep/apps-gworkspace.git
 [submodule "apps-systempreferences"]
 	path = apps-systempreferences
 	url = https://github.com/gnustep/apps-systempreferences.git
@@ -28,3 +22,6 @@
 [submodule "tools-scripts"]
 	path = tools-scripts
 	url = https://github.com/pkgdemon/tools-scripts.git
+[submodule "gworkspace"]
+	path = gworkspace
+	url = https://github.com/dszidi/gworkspace.git
