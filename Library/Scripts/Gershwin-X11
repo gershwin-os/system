@@ -2,4 +2,9 @@
 
 . /System/Makefiles/GNUstep.sh
 
-picom --config /System/Library/Preferences/picom.conf & openapp GWorkspace
+# Check if picom is installed
+if command -v picom > /dev/null 2>&1; then
+    picom --config /System/Library/Preferences/picom.conf &
+fi
+
+openapp GWorkspace
