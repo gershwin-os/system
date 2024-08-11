@@ -48,7 +48,7 @@ install: check_root
 	cd $$WORKDIR/libs-base && ./configure --with-installation-domain=SYSTEM && gmake -j"${CPUS}" || exit 1 && gmake install; \
 	cd $$WORKDIR/libs-gui && ./configure && gmake -j"${CPUS}" || exit 1 || exit 1 && gmake install; \
 	cd $$WORKDIR/libs-back && ./configure && gmake -j"${CPUS}" || exit 1 && gmake install; \
-	cd $$WORKDIR/gworkspace && ./configure && gmake && gmake install; \
+	cd $$WORKDIR/apps-gworkspace && ./configure && gmake && gmake install; \
 	cd $$WORKDIR/apps-systempreferences && gmake -j"${CPUS}" && gmake install; \
 	cd $$WORKDIR/dubstep-dark-theme && gmake -j"${CPUS}" && gmake install; \
 	cd $$WORKDIR && tar -cJvf system.txz $(TARGET_DIR); \
