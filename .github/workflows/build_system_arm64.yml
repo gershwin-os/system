@@ -34,11 +34,9 @@ jobs:
           echo "my info: " `uname -a`  
         # Set an output parameter `uname` for use in subsequent steps
         run: |
-          unzip gershwin-library-arm64.zip
-          tar -xf /__w/system/system/library.txz -C /
           make install
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
         name: gershwin-system-arm64-main
-        path: /tmp/system.txz
+        path: /home/runner/work/system/system/system.txz

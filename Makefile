@@ -50,7 +50,8 @@ install: check_root
 	cd $$WORKDIR/libs-back && ./configure && gmake -j"${CPUS}" || exit 1 && gmake install; \
 	cd $$WORKDIR/apps-gworkspace && ./configure && gmake && gmake install; \
 	cd $$WORKDIR/apps-systempreferences && gmake -j"${CPUS}" && gmake install; \
-	tar -cJvf /tmp/system.txz $(TARGET_DIR); \
+	cd $$WORKDIR/dubstep-dark-theme && gmake -j"${CPUS}" && gmake install; \
+	cd $$WORKDIR && tar -cJvf system.txz $(TARGET_DIR); \
 	fi;
 
 # Define the uninstall target
