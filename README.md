@@ -59,7 +59,7 @@ sudo make uninstall
 
 ## Cleanup
 
-This command will remove the gershwin-system-AMD64.tar.gz or gershwin-system-ARM64.tar.gz tar archive:
+This command will remove the system-AMD64.txz or gershwin-system-ARM64.tar.gz tar archive:
 
 ```
 sudo make clean
@@ -72,7 +72,7 @@ sudo make clean
 . /System/Makefiles/GNUstep.sh 
 ```
 
-2. Launch GWorkspace:
+2. Launch Workspace:
 ```
-openapp GWorkspace
+/System/Library/Scripts/Gershwin-X11
 ```
