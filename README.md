@@ -2,6 +2,15 @@
 
 This repository automates the installation of GNUstep components on Debian, utilizing submodules for a streamlined setup.
 
+# Requirements
+
+Gershwin has been tested and confirmed to work on the following platforms:
+
+* Debian 12
+* FreeBSD 14
+
+Since Gershwin leverages GNUstep, it should, in theory, be compatible with any platform supported by GNUstep.
+
 ## Components Included
 
 - **tools-scripts**: Utility scripts for setup and configuration.
@@ -31,7 +40,7 @@ These components are installed to the following directories within the SYSTEM do
 - **Man Pages**: `/System/share/man`
 - **Info Pages**: `/System/share/info`
 
-## Installation
+## Installation for Debian
 
 Follow these steps to set up Gershwin System on Linux:
 
@@ -44,6 +53,26 @@ git clone https://github.com/gershwin-os/system.git --recurse-submodules
 2. Install dependencies:
 ```
 cd system && sudo ./tools-scripts/install-dependencies-linux
+```
+
+3. Install using make:
+```
+sudo make install
+```
+
+## Installation for FreeBSD
+
+Follow these steps to set up Gershwin System on Linux:
+
+1. Clone the repository with submodules:
+
+```
+git clone https://github.com/gershwin-os/system.git --recurse-submodules
+```
+
+2. Install dependencies:
+```
+cd system && sudo ./tools-scripts/install-dependencies-freebsd
 ```
 
 3. Install using make:
