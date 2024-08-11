@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>EditorBackgroundColor</key>
+    <string>RGB 0.1 0.1 0.1</string>
+    <key>EditorForegroundColor</key>
+    <string>RGB 1.0 1.0 1.0</string>
+    <key>UseTearOffWindows</key>
+    <string>NO</string>
+</dict>
+</plist>

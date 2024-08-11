@@ -2,23 +2,4 @@
 
 . /System/Makefiles/GNUstep.sh
 
-# WINDOW MANAGEMENT
-defaults write NSGlobalDomain GSBackHandlesWindowDecorations 0
-defaults write NSGlobalDomain GSBackUsesNativeTaskbar 0
-
-# GLOBAL SETTINGS
-defaults write NSGlobalDomain GSSuppressAppIcon 1
-defaults write NSGlobalDomain GSTheme DubstepDark
-defaults write NSGlobalDomain NSBackUsesNativeTaskbar 1
-defaults write NSGlobalDomain NSInterfaceStyleDefault NSMacintoshInterfaceStyle
-defaults write NSGlobalDomain UseWindowMakerIcons 0
-
-# GWorkspace
-defaults write GWorkspace imagepath /System/Library/Desktop\ Pictures/
-
-# ProjectCenter
-defaults write ProjectCenter UseTearOffWindows NO
-defaults write ProjectCenter EditorForegroundColor 'RGB 1.0 1.0 1.0'
-defaults write ProjectCenter EditorBackgroundColor 'RGB 0.1 0.1 0.1'
-
 picom --config /System/Library/Preferences/picom.conf & openapp GWorkspace

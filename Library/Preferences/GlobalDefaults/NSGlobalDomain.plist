@@ -4,9 +4,19 @@
 <dict>
     <key>GSBackHandlesWindowDecorations</key>
     <string>NO</string>
+    <key>GSBackUsesNativeTaskbar</key>
+    <string>NO</string>
     <key>GSFileBrowserHideDotFiles</key>
     <string>YES</string>
+    <key>NSInterfaceStyleDefault</key>
+    <string>NSMacintoshInterfaceStyle</string>
     <key>NSMenuInterfaceStyle</key>
     <string>NSMacintoshInterfaceStyle</string>
+    <key>GSSuppressAppIcon</key>
+    <string>YES</string>
+    <key>GSTheme</key>
+    <string>DubstepDark</string>
+    <key>UseWindowMakerIcons</key>
+    <string>NO</string>
 </dict>
 </plist>
