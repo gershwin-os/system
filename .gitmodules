@@ -27,4 +27,4 @@
 	url = https://github.com/gnustep/tools-make.git
 [submodule "tools-scripts"]
 	path = tools-scripts
-	url = https://github.com/gnustep/tools-scripts.git
+	url = https://github.com/pkgdemon/tools-scripts.git
