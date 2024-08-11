@@ -22,6 +22,6 @@
 [submodule "tools-scripts"]
 	path = tools-scripts
 	url = https://github.com/pkgdemon/tools-scripts.git
-[submodule "gworkspace"]
-	path = gworkspace
-	url = https://github.com/dszidi/gworkspace.git
+[submodule "apps-gworkspace"]
+	path = apps-gworkspace
+	url = https://github.com/gnustep/apps-gworkspace.git
