@@ -59,7 +59,7 @@ sudo make uninstall
 
 ## Cleanup
 
-This command will remove the system-AMD64.txz or gershwin-system-ARM64.tar.gz tar archive:
+This command will remove the system.txz tar archive:
 
 ```
 sudo make clean
