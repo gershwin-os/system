@@ -43,12 +43,12 @@ git clone https://github.com/gershwin-os/system.git --recurse-submodules
 
 2. Install dependencies:
 ```
-sudo ./system/tools-scripts/install-dependencies-linux
+cd system && sudo ./tools-scripts/install-dependencies-linux
 ```
 
 3. Install using make:
 ```
-cd system && sudo make install
+sudo make install
 ```
 
 ## Uninstallation
