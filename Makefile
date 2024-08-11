@@ -69,7 +69,7 @@ uninstall: check_root
 	fi
 
 clean: check_root
-	FILE=/tmp/system.txz; \
+	FILE=system.txz; \
 	if [ -f $$FILE ]; then \
 		echo "Removing $$FILE..."; \
 		rm -f $$FILE; \
