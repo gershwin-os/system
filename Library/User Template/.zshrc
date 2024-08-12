@@ -10,8 +10,5 @@ alias ll='ls -l'
 alias la='ls -la'
 export EDITOR=nano
 
-# Add /opt/bin to the PATH
-export PATH="/opt/bin:$PATH"
-
 # Source GNUstep.sh
 source /System/Makefiles/GNUstep.sh
