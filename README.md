@@ -11,6 +11,10 @@ Gershwin has been tested and confirmed to work on the following platforms:
 
 Since Gershwin leverages GNUstep, it should, in theory, be compatible with any platform supported by GNUstep.
 
+Additionally the following packages must be installed to run Gershwin:
+
+* xorg
+
 ## Components Included
 
 - **tools-scripts**: Utility scripts for setup and configuration.
@@ -102,5 +106,5 @@ sudo make clean
 
 2. Launch Workspace:
 ```
-/System/Library/Scripts/Gershwin-X11
+startx /System/Library/Scripts/Gershwin-X11
 ```
