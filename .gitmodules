@@ -19,9 +19,9 @@
 [submodule "tools-make"]
 	path = tools-make
 	url = https://github.com/gnustep/tools-make.git
-[submodule "tools-scripts"]
-	path = tools-scripts
-	url = https://github.com/pkgdemon/tools-scripts.git
 [submodule "apps-gworkspace"]
 	path = apps-gworkspace
 	url = https://github.com/gnustep/apps-gworkspace.git
+[submodule "tools-scripts"]
+	path = tools-scripts
+	url = https://github.com/gnustep/tools-scripts.git
