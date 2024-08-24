@@ -7,4 +7,4 @@ if command -v picom > /dev/null 2>&1; then
     picom --config /System/Library/Preferences/picom.conf &
 fi
 
-openapp GWorkspace
+openapp Workspace

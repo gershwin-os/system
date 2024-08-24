@@ -16,12 +16,12 @@
 [submodule "tools-make"]
 	path = tools-make
 	url = https://github.com/gnustep/tools-make.git
-[submodule "apps-gworkspace"]
-	path = apps-gworkspace
-	url = https://github.com/gnustep/apps-gworkspace.git
 [submodule "tools-scripts"]
 	path = tools-scripts
 	url = https://github.com/gnustep/tools-scripts.git
 [submodule "dubstep-dark-theme"]
 	path = dubstep-dark-theme
 	url = https://github.com/gershwin-os/dubstep-dark-theme.git
+[submodule "workspace"]
+	path = workspace
+	url = https://github.com/gershwin-os/workspace.git
