@@ -13,9 +13,6 @@
 [submodule "apps-systempreferences"]
 	path = apps-systempreferences
 	url = https://github.com/gnustep/apps-systempreferences.git
-[submodule "dubstep-dark-theme"]
-	path = dubstep-dark-theme
-	url = https://github.com/ds-repos/dubstep-dark-theme
 [submodule "tools-make"]
 	path = tools-make
 	url = https://github.com/gnustep/tools-make.git
@@ -25,3 +22,6 @@
 [submodule "tools-scripts"]
 	path = tools-scripts
 	url = https://github.com/gnustep/tools-scripts.git
+[submodule "dubstep-dark-theme"]
+	path = dubstep-dark-theme
+	url = https://github.com/gershwin-os/dubstep-dark-theme.git
