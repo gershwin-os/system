@@ -2,6 +2,10 @@
 
 . /System/Makefiles/GNUstep.sh
 
+# Add our fonts path to fontconfig
+export FONTCONFIG_PATH=/System/Library/Preferences
+export FONTCONFIG_FILE=$FONTCONFIG_PATH/fonts.conf
+
 # Check if picom is installed
 if command -v picom > /dev/null 2>&1; then
     picom --config /System/Library/Preferences/picom.conf &

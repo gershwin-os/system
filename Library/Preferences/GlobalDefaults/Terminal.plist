@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>BoldTerminalFont</key>
+    <string>JetBrainsMono-Regular</string>
+    <key>BoldTerminalFontSize</key>
+    <real>14</real>
+    <key>TerminalFont</key>
+    <string>JetBrainsMono-Regular</string>
+    <key>TerminalFontSize</key>
+    <real>14</real>
+</dict>
+</plist>
