@@ -5,10 +5,10 @@
     <key>BoldTerminalFont</key>
     <string>JetBrainsMono-Regular</string>
     <key>BoldTerminalFontSize</key>
-    <real>16</real>
+    <real>14</real>
     <key>TerminalFont</key>
     <string>JetBrainsMono-Regular</string>
     <key>TerminalFontSize</key>
-    <real>16</real>
+    <real>14</real>
 </dict>
 </plist>
