@@ -24,7 +24,7 @@ TOOL_INSTALL_DIR = $(INSTALL_DIR)
 all: $(TOOL_NAME)
 
 $(TOOL_NAME): $(TOOL_SRC)
-	clang -o $(TOOL_NAME) $(TOOL_SRC) `gnustep-config --objc-flags` `gnustep-config --base-libs`
+	clang -o $(TOOL_NAME) $(TOOL_SRC) `gnustep-config --objc-flags` `gnustep-config --base-libs` -Wl,-rpath,/System/Library/Libraries/
 
 # Install target
 install: $(TOOL_NAME)
