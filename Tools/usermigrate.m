@@ -1,7 +1,21 @@
 #import <Foundation/Foundation.h>
+#include <sys/utsname.h>
 
-// Function to run pwd_mkdb with hardcoded path and arguments
+// Function to determine if the system is FreeBSD
+BOOL isFreeBSD() {
+    struct utsname systemInfo;
+    uname(&systemInfo);
+    NSString *osName = [NSString stringWithUTF8String:systemInfo.sysname];
+    return [osName isEqualToString:@"FreeBSD"];
+}
+
+// Function to run pwd_mkdb with hardcoded path and arguments (only for FreeBSD)
 BOOL runPwdMkdb() {
+    if (!isFreeBSD()) {
+        NSLog(@"pwd_mkdb is not applicable on non-FreeBSD systems.");
+        return NO;
+    }
+
     // Change the working directory to root to avoid issues with the current directory
     if (![[NSFileManager defaultManager] changeCurrentDirectoryPath:@"/"]) {
         NSLog(@"Failed to change directory to /");
@@ -119,60 +133,78 @@ void migrateUser(NSString *username) {
     if ([passwdContents containsString:oldHomeDirString]) {
         NSLog(@"Old home directory entry still exists in /etc/passwd, updating /etc/master.passwd and retrying...");
 
-        // Update /etc/master.passwd if needed
-        NSString *masterPasswdPath = @"/etc/master.passwd";
-        NSError *masterReadError = nil;
-        NSString *masterPasswdContents = [NSString stringWithContentsOfFile:masterPasswdPath encoding:NSUTF8StringEncoding error:&masterReadError];
+        if (isFreeBSD()) {
+            // Update /etc/master.passwd if needed
+            NSString *masterPasswdPath = @"/etc/master.passwd";
+            NSError *masterReadError = nil;
+            NSString *masterPasswdContents = [NSString stringWithContentsOfFile:masterPasswdPath encoding:NSUTF8StringEncoding error:&masterReadError];
 
-        if (masterReadError) {
-            NSLog(@"Error reading %@: %@", masterPasswdPath, [masterReadError localizedDescription]);
-            return;
-        }
+            if (masterReadError) {
+                NSLog(@"Error reading %@: %@", masterPasswdPath, [masterReadError localizedDescription]);
+                return;
+            }
 
-        if ([masterPasswdContents containsString:oldHomeDirString]) {
-            NSString *updatedMasterPasswdContents = [masterPasswdContents stringByReplacingOccurrencesOfString:oldHomeDirString
-                                                                                                   withString:newHomeDirString];
-            NSError *masterWriteError = nil;
-            [updatedMasterPasswdContents writeToFile:masterPasswdPath atomically:YES encoding:NSUTF8StringEncoding error:&masterWriteError];
+            if ([masterPasswdContents containsString:oldHomeDirString]) {
+                NSString *updatedMasterPasswdContents = [masterPasswdContents stringByReplacingOccurrencesOfString:oldHomeDirString
+                                                                                                       withString:newHomeDirString];
+                NSError *masterWriteError = nil;
+                [updatedMasterPasswdContents writeToFile:masterPasswdPath atomically:YES encoding:NSUTF8StringEncoding error:&masterWriteError];
 
-            if (masterWriteError) {
-                NSLog(@"Error updating %@: %@", masterPasswdPath, [masterWriteError localizedDescription]);
+                if (masterWriteError) {
+                    NSLog(@"Error updating %@: %@", masterPasswdPath, [masterWriteError localizedDescription]);
+                    return;
+                } else {
+                    NSLog(@"Updated /etc/master.passwd to reflect new home directory.");
+                }
+            }
+        } else {
+            // Update /etc/passwd directly on Linux
+            NSString *updatedPasswdContents = [passwdContents stringByReplacingOccurrencesOfString:oldHomeDirString
+                                                                                       withString:newHomeDirString];
+            NSError *passwdWriteError = nil;
+            [updatedPasswdContents writeToFile:passwdPath atomically:YES encoding:NSUTF8StringEncoding error:&passwdWriteError];
+
+            if (passwdWriteError) {
+                NSLog(@"Error updating /etc/passwd: %@", [passwdWriteError localizedDescription]);
                 return;
             } else {
-                NSLog(@"Updated /etc/master.passwd to reflect new home directory.");
+                NSLog(@"Updated /etc/passwd to reflect new home directory.");
+                return;
             }
         }
 
         // Retry running pwd_mkdb to update /etc/passwd
-        BOOL success = NO;
-        int attempts = 0;
-        const int maxAttempts = 5; // Retry up to 5 times
+        if (isFreeBSD()) {
+            BOOL success = NO;
+            int attempts = 0;
+            const int maxAttempts = 5; // Retry up to 5 times
 
-        while (attempts < maxAttempts) {
-            success = runPwdMkdb();
+            while (attempts < maxAttempts) {
+                success = runPwdMkdb();
 
-            // Recheck if /etc/passwd is updated successfully
-            NSError *checkError = nil;
-            NSString *checkPasswdContents = [NSString stringWithContentsOfFile:@"/etc/passwd"
-                                                                       encoding:NSUTF8StringEncoding
-                                                                          error:&checkError];
+                // Recheck if /etc/passwd is updated successfully
+                NSError *checkError = nil;
+                NSString *checkPasswdContents = [NSString stringWithContentsOfFile:@"/etc/passwd"
+                                                                           encoding:NSUTF8StringEncoding
+                                                                              error:&checkError];
 
-            if (checkError) {
-                NSLog(@"Error reading /etc/passwd: %@", [checkError localizedDescription]);
-                break;
+                if (checkError) {
+                    NSLog(@"Error reading /etc/passwd: %@", [checkError localizedDescription]);
+                    break;
+                }
+
+                if (![checkPasswdContents containsString:oldHomeDirString]) {
+                    NSLog(@"Successfully updated /etc/passwd.");
+                    break;
+                }
+
+                NSLog(@"Retrying pwd_mkdb as /etc/passwd still contains the old entry...");
+                attempts++;
             }
 
-            if (![checkPasswdContents containsString:oldHomeDirString]) {
-                NSLog(@"Successfully updated /etc/passwd.");
-                break;
+            if (!success) {
+                NSLog(@"Failed to update /etc/passwd after %d attempts.", maxAttempts);
             }
-
-            NSLog(@"Retrying pwd_mkdb as /etc/passwd still contains the old entry...");
-            attempts++;
-        }
-
-        if (!success) {
-            NSLog(@"Failed to update /etc/passwd after %d attempts.", maxAttempts);
         }
     } else {
         NSLog(@"Home directory entry not found in /etc/passwd or already updated.");
