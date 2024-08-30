@@ -51,6 +51,7 @@ install: check_root
 	cd $$WORKDIR/workspace && ./configure && gmake && gmake install; \
 	cd $$WORKDIR/apps-systempreferences && gmake -j"${CPUS}" && gmake install; \
 	cd $$WORKDIR/dubstep-dark-theme && gmake -j"${CPUS}" && gmake install; \
+	cd $$WORKDIR/Tools && gmake -j"${CPUS}" && gmake install; \
 	cd $$WORKDIR && tar -cJvf system.txz $(TARGET_DIR); \
 	fi;
 
