@@ -14,6 +14,7 @@ Since Gershwin leverages GNUstep, it should, in theory, be compatible with any p
 Additionally the following packages must be installed to run Gershwin:
 
 * xorg
+* picom (This is optional but improves theme with rounded corners)
 
 ## Components Included
 
