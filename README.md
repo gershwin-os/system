@@ -99,12 +99,12 @@ sudo make clean
 
 ## Usage
 
-1. Source GNUstep.sh:
+1. Run tool to migrate users from /home to /Users:
 ```
-. /System/Makefiles/GNUstep.sh 
+. /System/Tools/usermigrate <username>
 ```
 
-2. Launch Workspace:
+2. After logging out or restarting Launch Workspace:
 ```
 startx /System/Library/Scripts/Gershwin-X11
 ```
