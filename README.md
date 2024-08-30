@@ -103,7 +103,7 @@ sudo make clean
 
 1. Run tool to migrate users from /home to /Users:
 ```
-/System/Tools/usermigrate <username>
+sudo /System/Tools/usermigrate <username>
 ```
 
 2. After logging out or restarting Launch Workspace:
