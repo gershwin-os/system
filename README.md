@@ -33,16 +33,17 @@ Additionally the following packages must be installed to run Gershwin:
 These components are installed to the following directories within the SYSTEM domain:
 
 - **Applications**: `/System/Applications`
-- **Admin Applications**: `/System/Applications`
+- **Admin Applications**: `/System/Applications/Utilities`
 - **Web Applications**: `/System/WebApps`
 - **Tools**: `/System/Tools`
 - **Admin Tools**: `/System/Tools/Admin`
 - **Library**: `/System/Library`
+- **Fonts**: `/System/Library/Fonts`
 - **Headers**: `/System/Library/Headers`
 - **Libraries**: `/System/Library/Libraries`
 - **Documentation**: `/System/Library/Documentation`
-- **Man Pages**: `/System/Library/Documentation/man`
 - **Info Pages**: `//System/Library/Documentation/info`
+- **Man Pages**: `/System/Library/Documentation/man`
 
 ## Installation for Debian
 
