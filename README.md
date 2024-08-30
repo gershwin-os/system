@@ -83,11 +83,6 @@ cd system && sudo ./tools-scripts/install-dependencies-freebsd
 sudo make install
 ```
 
-4. Migrate Users:
-```
-sudo /System/Tools/migrateuser username
-```
-
 ## Uninstallation
 
 ```
