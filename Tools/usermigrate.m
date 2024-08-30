@@ -2,6 +2,12 @@
 
 // Function to run pwd_mkdb with hardcoded path and arguments
 BOOL runPwdMkdb() {
+    // Change the working directory to root to avoid issues with the current directory
+    if (![[NSFileManager defaultManager] changeCurrentDirectoryPath:@"/"]) {
+        NSLog(@"Failed to change directory to /");
+        return NO;
+    }
+
     // Hardcoded path and arguments for pwd_mkdb
     NSString *pwdMkdbPath = @"/usr/sbin/pwd_mkdb";
     NSArray *arguments = @[@"-p", @"/etc/master.passwd"];
