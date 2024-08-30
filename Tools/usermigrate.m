@@ -1,5 +1,7 @@
 #import <Foundation/Foundation.h>
 #include <sys/utsname.h>
+#include <pwd.h>
+#include <grp.h>
 
 // Function to determine if the system is FreeBSD
 BOOL isFreeBSD() {
@@ -60,6 +62,33 @@ BOOL runPwdMkdb() {
     }
 }
 
+// Function to change ownership of the new home directory
+BOOL changeOwnership(NSString *path, NSString *username) {
+    struct passwd *pw = getpwnam([username UTF8String]);
+    if (pw == NULL) {
+        NSLog(@"Failed to get user information for %@", username);
+        return NO;
+    }
+
+    uid_t uid = pw->pw_uid;
+    gid_t gid = pw->pw_gid;
+
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSDictionary *attributes = @{ NSFileOwnerAccountID: @(uid),
+                                  NSFileGroupOwnerAccountID: @(gid) };
+
+    NSError *error = nil;
+    BOOL success = [fileManager setAttributes:attributes ofItemAtPath:path error:&error];
+
+    if (!success) {
+        NSLog(@"Failed to change ownership of %@: %@", path, [error localizedDescription]);
+    } else {
+        NSLog(@"Successfully changed ownership of %@ to %@:%@", path, username, username);
+    }
+
+    return success;
+}
+
 void migrateUser(NSString *username) {
     NSString *homeDir = [NSString stringWithFormat:@"/home/%@", username];
     NSString *usersDir = @"/Users";
@@ -93,6 +122,12 @@ void migrateUser(NSString *username) {
         NSError *copyError = nil;
         if ([fileManager copyItemAtPath:homeDir toPath:newHomeDir error:&copyError]) {
             NSLog(@"Successfully copied %@ to %@", homeDir, newHomeDir);
+
+            // Change ownership of the new home directory
+            if (!changeOwnership(newHomeDir, username)) {
+                NSLog(@"Failed to set correct ownership for the new home directory.");
+                return;
+            }
 
             // Delete all files in the old home directory without removing the dataset
             NSError *contentsError = nil;
