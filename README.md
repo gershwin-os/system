@@ -34,14 +34,14 @@ These components are installed to the following directories within the SYSTEM do
 - **Applications**: `/System/Applications`
 - **Admin Applications**: `/System/Applications`
 - **Web Applications**: `/System/WebApps`
-- **Tools**: `/System/bin`
-- **Admin Tools**: `/System/sbin`
-- **Library**: `/System/lib`
-- **Headers**: `/System/include`
-- **Libraries**: `/System/lib`
+- **Tools**: `/System/Tools`
+- **Admin Tools**: `/System/Tools/Admin`
+- **Library**: `/System/Library`
+- **Headers**: `/System/Library/Headers`
+- **Libraries**: `/System/Library/Libraries`
 - **Documentation**: `/System/Documentation`
-- **Man Pages**: `/System/share/man`
-- **Info Pages**: `/System/share/info`
+- **Man Pages**: `/System/Library/Documentation/man`
+- **Info Pages**: `/System/Library/Documentation/info`
 
 ## Installation for Debian
 
