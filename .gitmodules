@@ -22,6 +22,3 @@
 [submodule "dubstep-dark-theme"]
 	path = dubstep-dark-theme
 	url = https://github.com/gershwin-os/dubstep-dark-theme.git
-[submodule "workspace"]
-	path = workspace
-	url = https://github.com/gershwin-os/workspace.git
