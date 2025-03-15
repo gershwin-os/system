@@ -7,9 +7,6 @@
 [submodule "libs-gui"]
 	path = libs-gui
 	url = https://github.com/gnustep/libs-gui
-[submodule "libs-back"]
-	path = libs-back
-	url = https://github.com/gnustep/libs-back
 [submodule "apps-systempreferences"]
 	path = apps-systempreferences
 	url = https://github.com/gnustep/apps-systempreferences.git
