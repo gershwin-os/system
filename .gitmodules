@@ -22,3 +22,6 @@
 [submodule "workspace"]
 	path = workspace
 	url = https://github.com/gershwin-os/workspace.git
+[submodule "libs-back"]
+	path = libs-back
+	url = https://github.com/gershwin-os/libs-back
