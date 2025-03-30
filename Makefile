@@ -53,6 +53,7 @@ install: check_root
 	cd $$WORKDIR/apps-systempreferences && gmake -j"${CPUS}" && gmake install; \
 	cd $$WORKDIR/dubstep-dark-theme && gmake -j"${CPUS}" && gmake install; \
 	cd $$WORKDIR && tar -cJvf system.txz $(TARGET_DIR); \
+	ln -s /System/Makefiles/GNUstep.sh /etc/profile.d/GNUstep.sh; \
 	fi;
 
 # Define the uninstall target
@@ -62,6 +63,7 @@ uninstall: check_root
 	  rm -rf /System; \
 	  removed="/System"; \
 	  echo "Removed /System"; \
+          rm /etc/profile.d/GNUstep.sh; \
 	fi; \
 	if [ -n "$$removed" ]; then \
 	  return 0; \
