@@ -40,6 +40,7 @@ install: check_root
 	mkdir -p $$WORKDIR/libobjc2/Build; \
 	cd $$WORKDIR/libobjc2/Build && pwd && ls && cmake .. \
 	  -DGNUSTEP_INSTALL_TYPE=SYSTEM \
+          -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
 	  -DCMAKE_BUILD_TYPE=Release \
 	  -DCMAKE_C_COMPILER=clang \
 	  -DCMAKE_CXX_COMPILER=clang++; \
