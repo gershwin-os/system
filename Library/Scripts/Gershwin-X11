@@ -3,12 +3,27 @@
 . /System/Makefiles/GNUstep.sh
 
 # Add our fonts path to fontconfig
-export FONTCONFIG_PATH=/System/Library/Preferences
-export FONTCONFIG_FILE=$FONTCONFIG_PATH/fonts.conf
+# export FONTCONFIG_PATH=/System/Library/Preferences
+# export FONTCONFIG_FILE=$FONTCONFIG_PATH/fonts.conf
 
-# Check if picom is installed
-if command -v picom > /dev/null 2>&1; then
-    picom --config /System/Library/Preferences/picom.conf &
+# Start XFCE settings daemon
+xfsettingsd &
+
+# Start clipboard manager
+# xfce4-clipman &
+
+# Start D-Bus
+if ! pgrep -x "dbus-daemon" > /dev/null; then
+    eval "$(dbus-launch --sh-syntax --exit-with-session)"
 fi
 
+# Start XFWM4 (window manager) with no compositor
+xfwm4 & sleep 1 &&
+
+echo "Starting XFCE panel..."
+xfce4-panel &
+
+xfdesktop &
+
+# Start GNUstep Workspace
 openapp Workspace
