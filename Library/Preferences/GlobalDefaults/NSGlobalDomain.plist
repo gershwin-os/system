@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>GSAppOwnsMiniWindow</key>
-    <integer>0</integer>
+    <string>NO</string>
     <key>GSBackHandlesWindowDecorations</key>
     <string>YES</string>
     <key>GSBackUsesNativeTaskbar</key>
