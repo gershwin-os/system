@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>no_desktop</key>
-    <true/>
     <key>DesktopApplicationName</key>
     <string>GWorkspace</string>
     <key>DesktopApplicationSelName</key>
@@ -124,7 +122,7 @@
     <array>
     </array>
     <key>no_desktop</key>
-    <string>NO</string>
+    <string>true</string>
     <key>saved_places</key>
     <array>
     </array>
